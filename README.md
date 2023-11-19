@@ -3,7 +3,7 @@
 
 ## Overview
 
-This Streamlit-based application leverages cutting-edge AI models to offer two main functionalities: Image Captioning and Text-to-Image Generation. Users can select between these two modes to either generate descriptive captions for images or create images from textual descriptions.
+This Streamlit-based application leverages cutting-edge AI models to offer two main functionalities: Image to Text and Text-to-Image Generation. Users can select between these two modes to either generate descriptive captions for images or create images from textual descriptions.
 
 ## Features
 
