@@ -77,4 +77,9 @@ def generate_blip_caption(image, model, processor, device):
     outputs = model.generate(**inputs)
     caption = processor.decode(outputs[0], skip_special_tokens=True)
 
+    # Generate the caption using the model
+    unwanted_prefix = "arafed"
+    if caption.startswith(unwanted_prefix):
+        caption = caption[len(unwanted_prefix):].lstrip()
+
     return caption
