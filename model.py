@@ -1,6 +1,15 @@
 from transformers import VisionEncoderDecoderModel, ViTFeatureExtractor, AutoTokenizer, BlipProcessor, BlipForConditionalGeneration
 import torch
+from diffusers import StableDiffusionPipeline
 
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the Hugging Face token
+auth_token = os.getenv("HUGGINGFACE_TOKEN")
 
 def load_vit_gpt2_model():
     # Load the model and its components
@@ -83,3 +92,11 @@ def generate_blip_caption(image, model, processor, device):
         caption = caption[len(unwanted_prefix):].lstrip()
 
     return caption
+
+
+def load_stable_diffusion_model(model_id="CompVis/stable-diffusion-v1-4", device="cuda"):
+    auth_token = os.getenv("HUGGINGFACE_TOKEN")
+    model = StableDiffusionPipeline.from_pretrained(model_id, revision="fp16", torch_dtype=torch.float16, use_auth_token=auth_token) 
+    model.to(device)
+    return model
+
