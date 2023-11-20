@@ -16,7 +16,7 @@ def load_image_from_url(url):
 def generate_image_from_text(model, prompt, device="cuda"):
     with torch.no_grad():
         generated_images = model(prompt)["images"]
-        
+
     generated_image = generated_images[0]
 
     return generated_image
